@@ -1,7 +1,14 @@
 import Vue from "vue";
-import App from "./App.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
+
+import { BootstrapVue } from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import App from "./App.vue";
+
+Vue.use(BootstrapVue)
 
 import routes from "./routes";
 import VueRouter from "vue-router";
