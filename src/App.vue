@@ -1,16 +1,17 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link :to="{ name: 'main' }">Vue Recipes</router-link>|
-      <router-link :to="{ name: 'search' }">Search</router-link>|
-      <!-- {{ !$root.store.username }}-->
+      <img src="https://thumbs.dreamstime.com/b/cooking-recipe-idea-logo-sheet-hat-as-bulb-inspiration-icon-illustration-202516492.jpg" width="150" height="150" alt="logo" style="width: 150px; height: 50px; object-fit: cover;">
+      <router-link :to="{ name: 'main' }">Vue Recipes</router-link> |
+      <router-link :to="{ name: 'search' }">Search</router-link> |
+      {{ !$root.store.username }}
       <span v-if="!$root.store.username">
         Guest:
-        <router-link :to="{ name: 'register' }">Register</router-link>|
-        <router-link :to="{ name: 'login' }">Login</router-link>|
+        <router-link :to="{ name: 'register' }">Register</router-link> |
+        <router-link :to="{ name: 'login' }">Login</router-link> |
       </span>
       <span v-else>
-        {{ $root.store.username }}: <button @click="Logout">Logout</button>|
+        {{ $root.store.username }}: <button @click="Logout">Logout</button> |
       </span>
     </div>
     <div class="column is-1">
@@ -97,23 +98,40 @@ export default {
 @import "@/scss/form-style.scss";
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Frank Ruhl Libre",Georgia,serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   min-height: 100vh;
+  background: #ebebeb;
 }
 
 #nav {
   padding: 30px;
+  text-align: left; 
+  box-shadow: 0 0 10px 1px rgba(32, 120, 0, 0.5);
+  background: #fff;
+ 
 }
+
+
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  font-size: larger;
+  margin: 30px;
+  color: black;
+  font-family: "Frank Ruhl Libre", Georgia,sans-serif;
 }
 
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+// img {
+//     width: 150px;
+//     height: 50px;
+//     object-fit: cover;
+// }
+
 </style>
