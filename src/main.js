@@ -2,13 +2,14 @@ import Vue from "vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
 
-import { BootstrapVue } from 'bootstrap-vue';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import App from "./App.vue";
 
 Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 
 import routes from "./routes";
 import VueRouter from "vue-router";
@@ -85,6 +86,7 @@ const shared_data = {
     localStorage.removeItem("username");
     this.username = undefined;
   },
+  server_domain: "http://localhost:3000",
 };
 console.log(shared_data);
 // Vue.prototype.$root.store = shared_data;
