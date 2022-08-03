@@ -18,8 +18,6 @@ const router = new VueRouter({
   routes,
 });
 
-// custom styles
-import './assets/css/styles.scss'
 import Vuelidate from "vuelidate";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
