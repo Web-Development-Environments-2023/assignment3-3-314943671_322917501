@@ -8,7 +8,4 @@ module.exports = {
     host: "localhost"
   }
   // publicPath: process.env.NODE_ENV === "production" ? "/LAB12/" : "/"
-  ,publicPath: process.env.NODE_ENV === 'production'
-    ? '/production-sub-path/'
-    : '/'
 };

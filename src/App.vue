@@ -1,19 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <h5 class="text-center title">(Light/Dark Mode)</h5>
-      <div class="content-box">
-        <div class="theme-switcher-wrap">
-          <label class="theme-switcher">
-            <div class="switch-path">
-              <div class="switch-handle">
-              </div>
-            </div>
-          </label>
-        </div>
-        <h3>Custom Dark Mode Toggler</h3>
-        <h5>(Vew.js, SCSS/CSS)</h5>
-      </div>
+      
       <img src="https://thumbs.dreamstime.com/b/cooking-recipe-idea-logo-sheet-hat-as-bulb-inspiration-icon-illustration-202516492.jpg" width="150" height="150" alt="logo" style="width: 150px; height: 50px; object-fit: cover;">
       <router-link :to="{ name: 'main' }">Vue Recipes</router-link> |
       <router-link :to="{ name: 'search' }">Search</router-link> |
