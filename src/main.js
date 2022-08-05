@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
+axios.defaults.withCredentials = true;
+
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css'

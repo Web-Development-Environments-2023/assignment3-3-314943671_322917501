@@ -7,11 +7,11 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "bootstrap": "^4.6.1",
+    "bootstrap": "^4.6.2",
     "bootstrap-vue": "^2.22.0",
     "core-js": "^3.6.5",
     "ESLint": "npm:eslint@^6.8.0",
-    "vue": "^2.6.14",
+    "vue": "^2.7.8",
     "vue-axios": "^2.1.5",
     "vue-router": "^3.2.0",
     "vuelidate": "^0.7.5"
