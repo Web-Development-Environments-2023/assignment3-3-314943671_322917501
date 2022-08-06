@@ -90,7 +90,7 @@ const shared_data = {
   },
   server_domain: "http://localhost:3000",
 };
-console.log("shared data", shared_data);
+console.log(shared_data);
 // Vue.prototype.$root.store = shared_data;
 
 new Vue({
