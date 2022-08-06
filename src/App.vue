@@ -16,19 +16,6 @@
         <router-link :to="{ name: 'myrecipes' }">My Recipes</router-link> |
         <router-link :to="{ name: 'myfavorites' }">My Favorites</router-link> |
       </span>
-<<<<<<< HEAD
-          <DarkModeSwitch @switched="onSwitched" :initialState="isDarkModeEnabled"/>
-          <dark-mode-toggle
-      id="dark-mode-toggle-1"
-      legend="Theme Switcher"
-      appearance="switch"
-      dark="Dark"
-      light="Light"
-      remember="Remember this"
-  ></dark-mode-toggle>
-          
-=======
->>>>>>> e6dc383dceb300f99b10bdc0721fa59ec29651d5
     </div>
 
     <router-view />
@@ -36,12 +23,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-import DarkModeSwitch from "vue-dark-mode-switch"
-import 'vue-dark-mode-switch/dist/vue-dark-mode-switch.css'
-
-=======
->>>>>>> e6dc383dceb300f99b10bdc0721fa59ec29651d5
 export default {
   name: "App",
   methods: {
@@ -54,45 +35,12 @@ export default {
       });
     }}
     };
-
-    let body = document.querySelector('body');
-let h3 = document.querySelector('h3');
-let nav = document.querySelector('nav');
-let active = document.querySelector('active');
-
-let isDARKmode = false
-function darkMODE(){
-    if (isDARKmode === true){
-        isDARKmode = false;
-        body.classList.remove("DMcolor","DMbcolor1");
-        h3.classList.remove("DMcolor","DMbcolor2");
-        active.classList.remove("DMcolor","DMbcolor2");
-        nav.classList.remove("DMcolor");   
-    } else{
-        isDARKmode = true;
-        body.classList.add("DMcolor","DMbcolor1");
-        h3.classList.add("DMcolor","DMbcolor2");
-        active.classList.add("DMcolor","DMbcolor2");
-        nav.classList.add("DMcolor");  
-    }
-}
 </script>
 
 <style lang="scss">
-<<<<<<< HEAD
-//@import "@/scss/form-style.scss";
-
-*{
-    color:#ddd;
-}
-
-body{
-    background: #111;
-=======
 @import "@/scss/form-style.scss";
 html{
   height: 100%;
->>>>>>> e6dc383dceb300f99b10bdc0721fa59ec29651d5
 }
 
 body{
@@ -136,7 +84,5 @@ body{
 //     height: 50px;
 //     object-fit: cover;
 // }
-
-
 
 </style>
