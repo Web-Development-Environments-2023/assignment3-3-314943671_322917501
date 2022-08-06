@@ -17,6 +17,15 @@
         <router-link :to="{ name: 'myfavorites' }">My Favorites</router-link> |
       </span>
           <DarkModeSwitch @switched="onSwitched" :initialState="isDarkModeEnabled"/>
+          <dark-mode-toggle
+      id="dark-mode-toggle-1"
+      legend="Theme Switcher"
+      appearance="switch"
+      dark="Dark"
+      light="Light"
+      remember="Remember this"
+  ></dark-mode-toggle>
+          
     </div>
 
     <router-view />
@@ -25,6 +34,7 @@
 
 <script>
 import DarkModeSwitch from "vue-dark-mode-switch"
+import 'vue-dark-mode-switch/dist/vue-dark-mode-switch.css'
 
 export default {
   name: "App",
@@ -48,11 +58,40 @@ export default {
 				console.log('dark mode is enabled :', isSwitched);
 			}}
     };
+
+    let body = document.querySelector('body');
+let h3 = document.querySelector('h3');
+let nav = document.querySelector('nav');
+let active = document.querySelector('active');
+
+let isDARKmode = false
+function darkMODE(){
+    if (isDARKmode === true){
+        isDARKmode = false;
+        body.classList.remove("DMcolor","DMbcolor1");
+        h3.classList.remove("DMcolor","DMbcolor2");
+        active.classList.remove("DMcolor","DMbcolor2");
+        nav.classList.remove("DMcolor");   
+    } else{
+        isDARKmode = true;
+        body.classList.add("DMcolor","DMbcolor1");
+        h3.classList.add("DMcolor","DMbcolor2");
+        active.classList.add("DMcolor","DMbcolor2");
+        nav.classList.add("DMcolor");  
+    }
+}
 </script>
 
 <style lang="scss">
 //@import "@/scss/form-style.scss";
-@import 'vue-dark-mode-switch/dist/vue-dark-mode-switch.css';
+
+*{
+    color:#ddd;
+}
+
+body{
+    background: #111;
+}
 
 html, body{
   margin: 0;
@@ -95,5 +134,7 @@ html, body{
 //     height: 50px;
 //     object-fit: cover;
 // }
+
+
 
 </style>
