@@ -38,16 +38,18 @@ export default {
       try {
         //console.log(this.$root.store.server_domain + "/recipes/random");
         const response = await this.axios.get(
-          this.$root.store.server_domain + "/recipes/random"
-          // "https://test-for-3-2.herokuapp.com/recipes/random"
+          //this.$root.store.server_domain + "/recipes/random"
+           "https://test-for-3-2.herokuapp.com/recipes/random"
         );
         
         
-        // console.log(response);
+        console.log("response", response);
         const recipes = response.data;
-        this.recipes = [];
-        this.recipes.push(...recipes);
-        // console.log(this.recipes);
+        console.log("recipes", recipes);
+        console.log("recipes data", recipes.recipes);
+        //this.recipes = [];
+        this.recipes.push(...recipes.recipes);
+         console.log("this.recipes", this.recipes);
       } catch (error) {
         console.log(error);
       }
