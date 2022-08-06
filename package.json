@@ -9,6 +9,7 @@
     "axios": "^0.27.2",
     "bootstrap": "^4.6.2",
     "bootstrap-vue": "^2.22.0",
+<<<<<<< HEAD
     "core-js": "^3.24.1",
     "dark-mode-toggle": "^0.14.0",
     "ESLint": "npm:eslint@^6.8.0",
@@ -17,6 +18,12 @@
     "vue-dark-mode-switch": "^1.1.0",
     "vue-dark-mode-switcher": "^0.1.8",
     "vue-perfect-dark-mode": "^1.0.0",
+=======
+    "core-js": "^3.6.5",
+    "ESLint": "npm:eslint@^6.8.0",
+    "vue": "^2.7.8",
+    "vue-axios": "^2.1.5",
+>>>>>>> e6dc383dceb300f99b10bdc0721fa59ec29651d5
     "vue-router": "^3.2.0",
     "vuelidate": "^0.7.5"
   },
@@ -31,7 +38,7 @@
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
     "prettier": "^1.19.1",
-    "sass": "^1.54.3",
+    "sass": "^1.54.0",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^5.74.0"

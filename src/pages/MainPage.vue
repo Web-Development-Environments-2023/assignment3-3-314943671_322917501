@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import RecipePreviewList from "../components/RecipePreviewList.vue";
+import RecipePreviewList from "../components/RecipePreviewList";
 export default {
   components: {
     RecipePreviewList

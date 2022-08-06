@@ -16,6 +16,7 @@
         <router-link :to="{ name: 'myrecipes' }">My Recipes</router-link> |
         <router-link :to="{ name: 'myfavorites' }">My Favorites</router-link> |
       </span>
+<<<<<<< HEAD
           <DarkModeSwitch @switched="onSwitched" :initialState="isDarkModeEnabled"/>
           <dark-mode-toggle
       id="dark-mode-toggle-1"
@@ -26,6 +27,8 @@
       remember="Remember this"
   ></dark-mode-toggle>
           
+=======
+>>>>>>> e6dc383dceb300f99b10bdc0721fa59ec29651d5
     </div>
 
     <router-view />
@@ -33,19 +36,14 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import DarkModeSwitch from "vue-dark-mode-switch"
 import 'vue-dark-mode-switch/dist/vue-dark-mode-switch.css'
 
+=======
+>>>>>>> e6dc383dceb300f99b10bdc0721fa59ec29651d5
 export default {
   name: "App",
-  data () {
-        return {
-            isDarkModeEnabled: false
-        }
-        },
-		components: {
-			DarkModeSwitch
-		},
   methods: {
     Logout() {
       this.$root.store.logout();
@@ -54,9 +52,7 @@ export default {
       this.$router.push("/").catch(() => {
         this.$forceUpdate();
       });
-    },onSwitched: function (isSwitched) {
-				console.log('dark mode is enabled :', isSwitched);
-			}}
+    }}
     };
 
     let body = document.querySelector('body');
@@ -83,6 +79,7 @@ function darkMODE(){
 </script>
 
 <style lang="scss">
+<<<<<<< HEAD
 //@import "@/scss/form-style.scss";
 
 *{
@@ -91,9 +88,14 @@ function darkMODE(){
 
 body{
     background: #111;
+=======
+@import "@/scss/form-style.scss";
+html{
+  height: 100%;
+>>>>>>> e6dc383dceb300f99b10bdc0721fa59ec29651d5
 }
 
-html, body{
+body{
   margin: 0;
   padding: 0;
   height: 100%;
@@ -104,14 +106,14 @@ html, body{
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   min-height: 100vh;
-  //background: #ebebeb;
+  background: #ebebeb;
 }
 
 #nav {
   padding: 30px;
   text-align: left; 
   box-shadow: 0 0 10px 1px rgba(32, 120, 0, 0.5);
-  //background: #fff;
+  background: #fff;
  
 }
 
