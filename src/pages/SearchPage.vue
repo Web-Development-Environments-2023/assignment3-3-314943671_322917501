@@ -23,7 +23,7 @@
           <b-form-select id="input-3" v-model="form.numResults" :options="foods"></b-form-select>
         </b-form-group>
         <div class="row justify-content-center">
-          <b-button class="btn btn-default" type="submit" variant="primary">Submit</b-button>
+          <b-button class="btn btn-default" type="submit" variant="primary">Search</b-button>
           <b-button class="btn btn-default" type="reset" variant="danger">Reset</b-button>
         </div>
       </b-form>
