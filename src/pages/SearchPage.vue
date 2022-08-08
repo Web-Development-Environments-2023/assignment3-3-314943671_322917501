@@ -51,6 +51,10 @@
             </b-list-group-item>
           </b-list-group>
           <b-button :to="{ name: 'recipe', params: { recipeId: r.id } }" variant="primary">Go To Instructions</b-button>
+
+          <b-button disabled variant="secondary" v-if="favorites.includes(r.id)">Added to favorites!</b-button>
+          <b-button variant="secondary" v-else v-on:click="addToFavorites(r.id)">Add to favorites</b-button>
+
         </b-card>
       </div>
     </div>
@@ -92,15 +96,15 @@ export default {
       recipes: [],
       sortby: 'likes',
       searched: false,
+      favorites: null,
     };
   },
 
   mounted() {
-    // console.log("mounted");
     this.cuisines.push(...cuisine);
     this.diets.push(...diet);
     this.intolerances.push(...intolerance);
-    // console.log($v);
+    this.getFavorites();
   },
 
   computed: {
@@ -115,7 +119,7 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
-      alert(JSON.stringify(this.form));
+      // alert(JSON.stringify(this.form));
       this.sendRequst();
     },
 
@@ -130,16 +134,15 @@ export default {
             diet: this.form.diet,
           }
         );
-        //console.log(response);
         const recipes = response.data.results;
         this.recipes = [];
         this.recipes.push(...recipes);
-        console.log(this.recipes);
         this.searched = true;
       } catch (error) {
         console.log(error);
       }
     },
+
     onReset(event) {
       event.preventDefault();
       // Reset our form values
@@ -149,16 +152,40 @@ export default {
         this.form.diet = "",
         this.form.numResults = null,
         this.searched = false;
-      //this.form.email = "";
-      //this.form.name = "";
-      //this.form.food = null;
-      //this.form.checked = [];
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {
         this.show = true;
       });
     },
+
+    async getFavorites() {
+      try {
+        const response = await this.axios.get(
+          this.$root.store.server_domain + "/users/favorites"
+        );
+
+        const recipes = response.data;
+        var result = recipes.map(recipe => (recipe.id));
+        this.favorites = [];
+        this.favorites.push(...result);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async addToFavorites(id) {
+      try {
+        const response = await this.axios.post(this.$root.store.server_domain + `/users/favorites`,
+          {
+            recipeId: id,
+          }
+        );
+        this.getFavorites();
+      } catch (error) {
+        console.log(error);
+      }
+    }
   },
 };
 </script>
