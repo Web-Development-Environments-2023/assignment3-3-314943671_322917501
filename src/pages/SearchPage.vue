@@ -41,13 +41,20 @@
       <div class="results" v-for="r in orderedRecipes" :key="r.id">
         <b-card :title="r.title" :img-src="r.image" img-alt="Image" img-top tag="article" class="mb-2 card">
           <b-list-group flush>
-            <b-list-group-item>Number of Likes: {{ r.aggregateLikes }}</b-list-group-item>
-            <b-list-group-item>Time To Make: {{ r.readyInMinutes }}</b-list-group-item>
+            <b-list-group-item>Number of Likes: {{ r.aggregateLikes }} &nbsp; &nbsp; Time To Make: {{ r.readyInMinutes }}
+            </b-list-group-item>
+            <!-- <b-list-group-item>Time To Make: {{ r.readyInMinutes }}</b-list-group-item> -->
+            <b-list-group-item v-if="watched.includes(r.id)">
+              <b-icon icon="eye" scale="1"></b-icon>Watched before!
+            </b-list-group-item>
             <b-list-group-item v-if="r.vegan">
-              <b-icon icon="check-circle" scale="1" variant="success"></b-icon>for vegans
+              <b-icon icon="check-circle" scale="1" variant="success"></b-icon>For Vegans
             </b-list-group-item>
             <b-list-group-item v-if="r.vegetarian">
-              <b-icon icon="check-circle" scale="1" variant="success"></b-icon>for vegetarians
+              <b-icon icon="check-circle" scale="1" variant="success"></b-icon>For Vegetarians
+            </b-list-group-item>
+            <b-list-group-item v-if="r.glutenFree">
+              <b-icon icon="check-circle" scale="1" variant="success"></b-icon>Gluten Free
             </b-list-group-item>
           </b-list-group>
           <b-button :to="{ name: 'recipe', params: { recipeId: r.id } }" variant="primary">Go To Instructions</b-button>
@@ -97,6 +104,7 @@ export default {
       sortby: 'likes',
       searched: false,
       favorites: null,
+      watched: null,
     };
   },
 
@@ -105,6 +113,7 @@ export default {
     this.diets.push(...diet);
     this.intolerances.push(...intolerance);
     this.getFavorites();
+    this.getWatched();
   },
 
   computed: {
@@ -138,6 +147,8 @@ export default {
         this.recipes = [];
         this.recipes.push(...recipes);
         this.searched = true;
+
+        console.log(this.recipes)
       } catch (error) {
         console.log(error);
       }
@@ -169,6 +180,23 @@ export default {
         var result = recipes.map(recipe => (recipe.id));
         this.favorites = [];
         this.favorites.push(...result);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async getWatched() {
+      try {
+        const response = await this.axios.get(
+          this.$root.store.server_domain + "/users/watched"
+        );
+
+        const recipes = response.data;
+        var result = recipes.map(recipe => (recipe.recipe_id));
+        this.watched = [];
+        this.watched.push(...result);
+
+        console.log(this.watched);
       } catch (error) {
         console.log(error);
       }

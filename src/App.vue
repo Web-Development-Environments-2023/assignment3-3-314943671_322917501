@@ -13,16 +13,26 @@
         <router-link :to="{ name: 'login' }">Login</router-link> |
       </span>
       <span v-else>
-        {{ $root.store.username }}: <button @click="Logout">Logout</button> |
-        <router-link :to="{ name: 'myrecipes' }">My Recipes</router-link> |
-        <router-link :to="{ name: 'myfavorites' }">My Favorites</router-link> |
+        <b-dropdown id="dropdown-1" text="Personal" class="m-md-2" variant="outline">
+          <b-dropdown-item>
+            <router-link :to="{ name: 'myrecipes' }">My Recipes</router-link>
+          </b-dropdown-item>
+          <b-dropdown-item>
+            <router-link :to="{ name: 'myfavorites' }">My Favorites</router-link>
+          </b-dropdown-item>
+          <b-dropdown-item>
+            <router-link :to="{ name: 'myfamily' }">My Family</router-link>
+          </b-dropdown-item>
+        </b-dropdown> &nbsp; &nbsp; &nbsp;
+
+        Welcome back! {{ $root.store.username }} &nbsp; &nbsp; &nbsp;
+        <b-button pill variant="warning" @click="Logout">Logout</b-button>
       </span>
       <label class="toggle">
         <input type="checkbox" @click="toggleDarkLight()" style="display: left;">        
         <span class="slider round"></span>
       </label>
     </div>
-
     <router-view />
   </div>
 </template>
@@ -47,17 +57,19 @@ export default {
 
 <style lang="scss">
 @import "@/scss/form-style.scss";
-html{
+
+html {
   height: 100%;
 }
 
-body{
+body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
+
 #app {
-  font-family: "Frank Ruhl Libre",Georgia,serif;
+  font-family: "Frank Ruhl Libre", Georgia, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   //color: #2c3e50;
@@ -83,7 +95,7 @@ a {
 
 
 #nav a {
-  font-weight: bold;
+
   font-size: larger;
   margin: 5vw;
   font-family: "Frank Ruhl Libre", Georgia,sans-serif;
@@ -186,5 +198,4 @@ input:checked + .slider::before{
 //     height: 50px;
 //     object-fit: cover;
 // }
-
 </style>

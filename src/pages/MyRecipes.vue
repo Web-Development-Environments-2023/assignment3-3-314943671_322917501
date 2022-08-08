@@ -62,10 +62,10 @@
                     <b-list-group flush>
                         <b-list-group-item>Number of Likes: {{ r.popularity }}</b-list-group-item>
                         <b-list-group-item>Time To Make: {{ r.readyInMinutes }}</b-list-group-item>
-                        <b-list-group-item v-if="r.vegan">
+                        <b-list-group-item v-if="r.vegan == 'true'">
                             <b-icon icon="check-circle" scale="1" variant="success"></b-icon>for vegans
                         </b-list-group-item>
-                        <b-list-group-item v-if="r.vegetarian">
+                        <b-list-group-item v-if="r.vegetarian == 'true'">
                             <b-icon icon="check-circle" scale="1" variant="success"></b-icon>for vegetarians
                         </b-list-group-item>
                     </b-list-group>
