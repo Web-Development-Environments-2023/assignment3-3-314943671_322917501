@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <br />
-        <h1 class="title">My Recipes</h1>
+        <h1 class="title text-center">My Recipes</h1>
         <div>
             <b-button v-b-modal.modal-1>Add Recipe</b-button>
 
@@ -69,7 +69,8 @@
                             <b-icon icon="check-circle" scale="1" variant="success"></b-icon>for vegetarians
                         </b-list-group-item>
                     </b-list-group>
-                    <b-button :to="{ name: 'myrecipe', params: { name: r } }" variant="primary">Go To Instructions</b-button>
+                    <b-button :to="{ name: 'myrecipe', params: { name: r } }" variant="primary">Go To Instructions
+                    </b-button>
                 </b-card>
             </div>
         </div>
@@ -116,7 +117,6 @@ export default {
     methods: {
         async updateRecipes() {
             try {
-                //console.log(this.$root.store.server_domain + "/recipes/random");
                 const response = await this.axios.get(
                     this.$root.store.server_domain + "/users/myRecipes"
                     // "https://test-for-3-2.herokuapp.com/recipes/random"
@@ -125,8 +125,6 @@ export default {
                 const recipes = response.data;
                 this.recipes = [];
                 this.recipes.push(...recipes);
-
-                // console.log(this.recipes); //////////
             } catch (error) {
                 console.log(error);
             }
@@ -134,12 +132,9 @@ export default {
 
         onSubmit(event) {
             event.preventDefault()
-            alert(JSON.stringify(this.form))
-            console.log(this.form)
             //need to check validation
             this.sendRequst();
         },
-
 
         async sendRequst() {
             try {
@@ -158,14 +153,15 @@ export default {
                         servings: this.form.servings
                     }
                 );
-                // console.log(response);
+                this.$root.toast("Add New Recipe", "Recipe was added successfully", "success");
+                this.onReset();
             } catch (error) {
                 console.log(error);
             }
         },
 
         onReset(event) {
-            event.preventDefault()
+            // event.preventDefault()
             // Reset our form values
             this.form.title = '',
                 this.form.image = '',
@@ -176,8 +172,8 @@ export default {
                 this.form.vegetarian = false,
                 this.form.vegan = false,
                 this.form.glutenFree = false,
-            // Trick to reset/clear native browser form validation state
-            this.show = false
+                // Trick to reset/clear native browser form validation state
+                this.show = false
             this.$nextTick(() => {
                 this.show = true
             })

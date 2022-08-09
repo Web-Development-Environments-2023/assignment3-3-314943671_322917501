@@ -17,7 +17,7 @@
                             {{ recipe.ingredients }}
                         </ul>
                     </div>
-                    
+
                     <div class="wrapped">
                         Instructions:
                         <ol>

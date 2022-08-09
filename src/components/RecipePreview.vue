@@ -1,9 +1,7 @@
 <template>
-  <router-link
-    :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
-    class="recipe-preview"
-  >
-    <div class="recipe-body">
+  <div class="results">
+
+    <!-- <div class="recipe-body">
       <img :src="recipe.image" class="recipe-image" />
     </div>
     <div class="recipe-footer">
@@ -14,8 +12,38 @@
         <li>{{ recipe.readyInMinutes }} minutes</li>
         <li>{{ recipe.aggregateLikes }} likes</li>
       </ul>
-    </div>
-  </router-link>
+    </div> -->
+    <b-card :title="recipe.title" :img-src="recipe.image" img-alt="Image" img-top tag="article" class="mb-2 card">
+      <b-list-group flush>
+        <b-list-group-item>Likes: {{ recipe.aggregateLikes }} &nbsp; &nbsp; Time To Make: {{
+            recipe.readyInMinutes
+        }}
+        </b-list-group-item>
+
+
+        <b-list-group-item v-if="watched.includes(recipe.id.toString())">
+          <b-icon icon="eye" scale="1"></b-icon>Watched before!
+        </b-list-group-item>
+
+        <b-list-group-item v-if="recipe.vegan">
+          <b-icon icon="check-circle" scale="1" variant="success"></b-icon>For Vegans
+        </b-list-group-item>
+        <b-list-group-item v-if="recipe.vegetarian">
+          <b-icon icon="check-circle" scale="1" variant="success"></b-icon>For Vegetarians
+        </b-list-group-item>
+        <b-list-group-item v-if="recipe.glutenFree">
+          <b-icon icon="check-circle" scale="1" variant="success"></b-icon>Gluten Free
+        </b-list-group-item>
+      </b-list-group>
+      <b-button :to="{ name: 'recipe', params: { recipeId: recipe.id } }" variant="primary">Instructions
+      </b-button>
+
+      <b-button disabled variant="secondary" v-if="favorites.includes(recipe.id.toString())">Added!</b-button>
+      <b-button variant="secondary" v-else v-on:click="addToFavorites(recipe.id)">Add to favorites</b-button>
+
+    </b-card>
+
+  </div>
 </template>
 
 <script>
@@ -34,36 +62,65 @@ export default {
     recipe: {
       type: Object,
       required: true
-    }
+    },
 
-    // id: {
-    //   type: Number,
-    //   required: true
-    // },
-    // title: {
-    //   type: String,
-    //   required: true
-    // },
-    // readyInMinutes: {
-    //   type: Number,
-    //   required: true
-    // },
-    // image: {
-    //   type: String,
-    //   required: true
-    // },
-    // aggregateLikes: {
-    //   type: Number,
-    //   required: false,
-    //   default() {
-    //     return undefined;
-    //   }
-    // }
+    favorites: {
+      type: Array,
+      required: true
+    },
+
+    watched: {
+      type: Array,
+      required: true
+    }
+  },
+  methods: {
+    async addToFavorites(id) {
+      try {
+        const response = await this.axios.post(this.$root.store.server_domain + `/users/favorites`,
+          {
+            recipeId: id,
+          }
+        );
+        this.$root.toast("Add to favorites", "Recipe was added successfully", "success");
+        this.getFavorites();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async getFavorites() {
+      try {
+        const response = await this.axios.get(
+          this.$root.store.server_domain + "/users/favoritesId"
+        );
+        const recipes = response.data;
+        this.favorites.push(...recipes);
+      } catch (error) {
+        console.log(error);
+      }
+    },
   }
 };
 </script>
 
 <style scoped>
+.btn {
+  margin: 0 10px;
+}
+
+.results {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  /* padding-top: 10px; */
+}
+
+/* .card {
+  width: 110%;
+} */
+
+/* 
 .recipe-preview {
   display: inline-block;
   width: 90%;
@@ -71,7 +128,8 @@ export default {
   position: relative;
   margin: 10px 10px;
 }
-.recipe-preview > .recipe-body {
+
+.recipe-preview>.recipe-body {
   width: 100%;
   height: 200px;
   position: relative;
@@ -137,5 +195,5 @@ export default {
   width: 90px;
   display: table-cell;
   text-align: center;
-}
+} */
 </style>

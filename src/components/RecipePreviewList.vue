@@ -6,7 +6,7 @@
     </h3>
     <b-row>
       <b-col v-for="r in recipes" :key="r.id">
-        <RecipePreview class="recipePreview" :recipe="r" />
+        <RecipePreview class="recipePreview" :recipe="r" :favorites="favoritesRecipes" :watched="watchedRecipes" />
       </b-col>
     </b-row>
   </b-container>
@@ -24,32 +24,77 @@ export default {
       type: String,
       required: true,
     },
+    random: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
       recipes: [],
+      favoritesRecipes: [],
+      watchedRecipes: [],
+
     };
   },
   mounted() {
-    this.updateRecipes();
+
+    this.getFavorites();
+    this.getWatched();
+    if (this.random == "true")
+      this.updateRecipes();
+    else
+      this.getLastViewed();
+
   },
   methods: {
     async updateRecipes() {
       try {
-        //console.log(this.$root.store.server_domain + "/recipes/random");
         const response = await this.axios.get(
           this.$root.store.server_domain + "/recipes/random"
           //  "https://test-for-3-2.herokuapp.com/recipes/random"
         );
-        
-        
-        // console.log("response", response);
         const recipes = response.data;
-        // console.log("recipes", recipes);
-        // console.log("recipes data", recipes.recipes);
         this.recipes = [];
         this.recipes.push(...recipes);
-        //  console.log("this.recipes", this.recipes);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async getLastViewed() {
+      try {
+        const response = await this.axios.get(
+          this.$root.store.server_domain + "/users/lastViewedRecipes"
+          //  "https://test-for-3-2.herokuapp.com/recipes/random"
+        );
+        const recipes = response.data;
+        this.recipes = [];
+        this.recipes.push(...recipes);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async getFavorites() {
+      try {
+        const response = await this.axios.get(
+          this.$root.store.server_domain + "/users/favoritesId"
+        );
+        const recipes = response.data;
+        this.favoritesRecipes.push(...recipes);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async getWatched() {
+      try {
+        const response = await this.axios.get(
+          this.$root.store.server_domain + "/users/watched"
+        );
+        const recipes = response.data;
+        this.watchedRecipes.push(...recipes);
       } catch (error) {
         console.log(error);
       }
