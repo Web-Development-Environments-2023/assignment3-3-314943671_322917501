@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <br />
-        <h1 class="title">My Family Recipes</h1>
+        <h1 class="title text-center">My Family Recipes</h1>
       
         <div v-if="recipes.length > 0">
             <br />

@@ -14,10 +14,7 @@
             </div>
             Ingredients:
             <ul>
-              <li
-                v-for="(r, index) in recipe.extendedIngredients"
-                :key="index + '_' + r.id"
-              >
+              <li v-for="(r, index) in recipe.extendedIngredients" :key="index + '_' + r.id">
                 {{ r.original }}
               </li>
             </ul>
@@ -51,8 +48,6 @@ export default {
   async created() {
     try {
       let response;
-      // response = this.$route.params.response;
-
       try {
         response = await this.axios.get(
           "https://test-for-3-2.herokuapp.com/recipes/info",
@@ -109,15 +104,18 @@ export default {
 .wrapper {
   display: flex;
 }
+
 .wrapped {
   width: 50%;
 }
+
 .center {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
+
 /* .recipe-header{
 
 } */

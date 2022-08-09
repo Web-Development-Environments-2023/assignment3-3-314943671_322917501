@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <br />
-    <h1 class="title">Search Page</h1>
+    <h1 class="title text-center">Search Page</h1>
     <div>
       <b-form @submit="onSubmit" @reset="onReset">
         <b-form-input v-model="form.query" placeholder="Search for recipe"></b-form-input>
@@ -39,14 +39,18 @@
       Number of results: {{ recipes.length }}
 
       <div class="results" v-for="r in orderedRecipes" :key="r.id">
-        <b-card :title="r.title" :img-src="r.image" img-alt="Image" img-top tag="article" class="mb-2 card">
+        <RecipePreview class="recipePreview" :recipe="r" :favorites="favorites" :watched="watched" />
+        <!-- <b-card :title="r.title" :img-src="r.image" img-alt="Image" img-top tag="article" class="mb-2 card">
           <b-list-group flush>
-            <b-list-group-item>Number of Likes: {{ r.aggregateLikes }} &nbsp; &nbsp; Time To Make: {{ r.readyInMinutes }}
+            <b-list-group-item>Likes: {{ r.aggregateLikes }} &nbsp; &nbsp; Time To Make: {{ r.readyInMinutes
+            }}
             </b-list-group-item>
-            <!-- <b-list-group-item>Time To Make: {{ r.readyInMinutes }}</b-list-group-item> -->
-            <b-list-group-item v-if="watched.includes(r.id)">
+            
+
+            <b-list-group-item v-if="watched.includes(r.id.toString())">
               <b-icon icon="eye" scale="1"></b-icon>Watched before!
             </b-list-group-item>
+
             <b-list-group-item v-if="r.vegan">
               <b-icon icon="check-circle" scale="1" variant="success"></b-icon>For Vegans
             </b-list-group-item>
@@ -59,10 +63,10 @@
           </b-list-group>
           <b-button :to="{ name: 'recipe', params: { recipeId: r.id } }" variant="primary">Go To Instructions</b-button>
 
-          <b-button disabled variant="secondary" v-if="favorites.includes(r.id)">Added to favorites!</b-button>
+          <b-button disabled variant="secondary" v-if="favorites.includes(r.id.toString())">Added to favorites!</b-button>
           <b-button variant="secondary" v-else v-on:click="addToFavorites(r.id)">Add to favorites</b-button>
 
-        </b-card>
+        </b-card> -->
       </div>
     </div>
 
@@ -78,11 +82,12 @@ import cuisine from "../assets/cuisine";
 import intolerance from "../assets/intolerance";
 import diet from "../assets/diet";
 import _ from 'lodash';
+import RecipePreview from "../components/RecipePreview.vue";
 
 export default {
   name: "SearchPage",
   components: {
-    //RecipePreview,
+    RecipePreview,
   },
   data() {
     return {
@@ -103,8 +108,8 @@ export default {
       recipes: [],
       sortby: 'likes',
       searched: false,
-      favorites: null,
-      watched: null,
+      favorites: [],
+      watched: [],
     };
   },
 
@@ -147,8 +152,6 @@ export default {
         this.recipes = [];
         this.recipes.push(...recipes);
         this.searched = true;
-
-        console.log(this.recipes)
       } catch (error) {
         console.log(error);
       }
@@ -173,13 +176,14 @@ export default {
     async getFavorites() {
       try {
         const response = await this.axios.get(
-          this.$root.store.server_domain + "/users/favorites"
+          this.$root.store.server_domain + "/users/favoritesId"
         );
 
         const recipes = response.data;
-        var result = recipes.map(recipe => (recipe.id));
+        // var result = recipes.map(recipe => (recipe.id));
         this.favorites = [];
-        this.favorites.push(...result);
+        this.favorites.push(...recipes);
+        // console.log(this.favorites);
       } catch (error) {
         console.log(error);
       }
@@ -192,11 +196,9 @@ export default {
         );
 
         const recipes = response.data;
-        var result = recipes.map(recipe => (recipe.recipe_id));
+        // var result = recipes.map(recipe => (recipe.recipe_id));
         this.watched = [];
-        this.watched.push(...result);
-
-        console.log(this.watched);
+        this.watched.push(...recipes);
       } catch (error) {
         console.log(error);
       }

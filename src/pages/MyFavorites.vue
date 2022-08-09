@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <br />
-        <h1 class="title">My Favorites</h1>
+        <h1 class="title text-center">My Favorites</h1>
 
         <div v-if="recipes.length > 0">
             <br />
@@ -10,7 +10,7 @@
             <div class="results" v-for="r in orderedRecipes" :key="r.id">
                 <b-card :title="r.title" :img-src="r.image" img-alt="Image" img-top tag="article" class="mb-2 card">
                     <b-list-group flush>
-                        <b-list-group-item>Number of Likes: {{ r.popularity }}</b-list-group-item>
+                        <b-list-group-item>Number of Likes: {{ r.aggregateLikes }}</b-list-group-item>
                         <b-list-group-item>Time To Make: {{ r.readyInMinutes }}</b-list-group-item>
                         <b-list-group-item v-if="r.vegan">
                             <b-icon icon="check-circle" scale="1" variant="success"></b-icon>for vegans
@@ -51,9 +51,7 @@ export default {
     },
 
     mounted() {
-        // console.log("mounted");
         this.updateRecipes();
-        // console.log($v);
     },
 
     computed: {
@@ -68,27 +66,17 @@ export default {
     methods: {
         async updateRecipes() {
             try {
-                //console.log(this.$root.store.server_domain + "/recipes/random");
                 const response = await this.axios.get(
                     this.$root.store.server_domain + "/users/favorites"
                     // "https://test-for-3-2.herokuapp.com/recipes/random"
                 );
-
-
-                // console.log(response);
                 const recipes = response.data;
                 this.recipes = [];
                 this.recipes.push(...recipes);
-                // console.log(this.recipes);
             } catch (error) {
                 console.log(error);
             }
         },
-
-
-
-
-
     },
 };
 </script>

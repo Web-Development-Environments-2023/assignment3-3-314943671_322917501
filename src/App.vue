@@ -9,7 +9,7 @@
       <router-link :to="{ name: 'search' }">Search</router-link> &nbsp; &nbsp; &nbsp;
 
       <span v-if="!$root.store.username">
-        Guest:
+        Hello Guest! &nbsp; &nbsp;
         <router-link :to="{ name: 'register' }">Register</router-link> &nbsp; &nbsp; &nbsp;
         <router-link :to="{ name: 'login' }">Login</router-link> &nbsp; &nbsp; &nbsp;
       </span>
