@@ -4,9 +4,10 @@
       <router-link :to="{ name: 'main' }">
       <img src="./assets/homepage_icon+logo.png" width="150" height="100" alt="logo" style="width: 130px;height: 50px;object-fit: cover;left: 1%;">
       </router-link>
-      <router-link :to="{ name: 'about' }">About Us</router-link> &nbsp; &nbsp; &nbsp;
+      
       <router-link :to="{ name: 'main' }">Home</router-link> &nbsp; &nbsp; &nbsp;
       <router-link :to="{ name: 'search' }">Search</router-link> &nbsp; &nbsp; &nbsp;
+      <router-link :to="{ name: 'about' }">About Us</router-link> &nbsp; &nbsp; &nbsp;
 
       <span v-if="!$root.store.username">
         Hello Guest! &nbsp; &nbsp;
