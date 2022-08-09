@@ -56,7 +56,7 @@ export default {
         );
         const recipes = response.data;
         this.recipes = [];
-        this.recipes.push(...recipes);
+        this.recipes.push(...recipes.recipes);
       } catch (error) {
         console.log(error);
       }
@@ -82,7 +82,7 @@ export default {
           this.$root.store.server_domain + "/users/favoritesId"
         );
         const recipes = response.data;
-        this.favoritesRecipes.push(...recipes);
+        this.favoritesRecipes.push(...recipes.recipes);
       } catch (error) {
         console.log(error);
       }
@@ -94,7 +94,7 @@ export default {
           this.$root.store.server_domain + "/users/watched"
         );
         const recipes = response.data;
-        this.watchedRecipes.push(...recipes);
+        this.watchedRecipes.push(...recipes.recipes);
       } catch (error) {
         console.log(error);
       }

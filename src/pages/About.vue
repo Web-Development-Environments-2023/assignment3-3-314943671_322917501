@@ -16,7 +16,7 @@
         </b-img>
         <br />
         <br />
-        <h5>Chen "GuessWho" Kolely</h5>
+        <h5>Chen "Guess Who?" Kolely</h5>
         <p></p>
       </div>
     </div>

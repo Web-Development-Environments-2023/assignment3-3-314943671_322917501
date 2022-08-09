@@ -100,10 +100,13 @@ a {
 #nav a {
 
   font-size: larger;
-  margin: 5vw;
+  margin: 15px;
   font-family: "Frank Ruhl Libre", Georgia,sans-serif;
 }
-
+#nav span{
+  right: 5%;
+  position: absolute;
+}
 #nav a.router-link-exact-active {
   color: #42b983;
 }
@@ -202,6 +205,18 @@ input:checked + .slider::before{
     background-color: #313842;
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
+}
+.dark-mode .btn-primary{
+  color: inherit;
+}
+.dark-mode .dropdown-toggle{
+  color:inherit;
+}
+.dark-mode .card-body{
+  background-color: #313842;
+}
+.dark-mode .list-group-item{
+  background-color: #313842;
 }
 // img {
 //     width: 150px;
