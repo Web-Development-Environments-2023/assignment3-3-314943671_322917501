@@ -2,15 +2,16 @@
   <div id="app">
     <div id="nav">
       <router-link :to="{ name: 'main' }">
-      <img src="./assets/homepage_icon+logo.png" width="150" height="100" alt="logo" style="width: 130px; height: 50px; object-fit: cover;">
+      <img src="./assets/homepage_icon+logo.png" width="150" height="100" alt="logo" style="width: 130px;height: 50px;object-fit: cover;left: 1%;">
       </router-link>
-      <router-link :to="{ name: 'main' }">Vue Recipes</router-link> |
-      <router-link :to="{ name: 'search' }">Search</router-link> |
-      <!--{{ !$root.store.username }}-->
+      <router-link :to="{ name: 'about' }">About Us</router-link> &nbsp; &nbsp; &nbsp;
+      <router-link :to="{ name: 'main' }">Home</router-link> &nbsp; &nbsp; &nbsp;
+      <router-link :to="{ name: 'search' }">Search</router-link> &nbsp; &nbsp; &nbsp;
+
       <span v-if="!$root.store.username">
-        Guest
-        <router-link :to="{ name: 'register' }">Register</router-link> |
-        <router-link :to="{ name: 'login' }">Login</router-link> |
+        Guest:
+        <router-link :to="{ name: 'register' }">Register</router-link> &nbsp; &nbsp; &nbsp;
+        <router-link :to="{ name: 'login' }">Login</router-link> &nbsp; &nbsp; &nbsp;
       </span>
       <span v-else>
         <b-dropdown id="dropdown-1" text="Personal" class="m-md-2" variant="outline">
@@ -92,7 +93,9 @@ a {
     background-color: transparent;
 }
 
-
+#nav li a{
+  margin: 0;
+}
 
 #nav a {
 
@@ -142,6 +145,8 @@ input:checked + .slider::before{
   display: inline-block;
   width: 60px;
   height: 34px;
+  position: absolute;
+  right: 0;
 }
 .dark-mode{
   background: #222831;
@@ -192,6 +197,11 @@ input:checked + .slider::before{
     vertical-align: middle;
     background:#434C5E url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%274%27 height=%275%27 viewBox=%270 0 4 5%27%3e%3cpath fill=%27%23fff%27 d=%27M2 0L0 2h4zm0 5L0 3h4z%27/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat;
     border: 1px solid #ced4da;
+}
+.dark-mode .dropdown-menu {
+    background-color: #313842;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
 }
 // img {
 //     width: 150px;
