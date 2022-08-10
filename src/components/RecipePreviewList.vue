@@ -11,7 +11,7 @@
     </b-row>
     <div class="row">
       <div class="col">
-        <b-button pill variant="primary" @click="updateRecipes()" class="center">More Recipes</b-button>
+        <b-button pill variant="primary" @click="updateRecipes()" v-if="random=='true'" class="center">More Recipes</b-button>
       </div>
     </div>
   </b-container>
