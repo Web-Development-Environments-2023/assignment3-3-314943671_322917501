@@ -55,9 +55,10 @@
 
         <div v-if="recipes.length > 0">
             <br />
-            Number of results: {{ recipes.length }}
+            <h4> Number of results: {{ recipes.length }}</h4>
 
-            <div class="results" v-for="r in recipes" :key="r.id">
+            <b-row>
+            <b-col v-for="r in recipes" :key="r.id">
                 <b-card :title="r.title" :img-src="r.image" img-alt="Image" img-top tag="article" class="mb-2 card">
                     <b-list-group flush>
                         <b-list-group-item>Number of Likes: {{ r.popularity }}</b-list-group-item>
@@ -72,7 +73,8 @@
                     <b-button :to="{ name: 'myrecipe', params: { name: r } }" variant="primary">Go To Instructions
                     </b-button>
                 </b-card>
-            </div>
+            </b-col>
+            </b-row>
         </div>
 
         <div v-else-if="searched">
@@ -196,6 +198,6 @@ export default {
 }
 
 .card {
-    width: 40%;
+    width: 15vmax;
 }
 </style>

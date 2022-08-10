@@ -11,7 +11,7 @@
     </b-row>
     <div class="row">
       <div class="col">
-        <b-button pill variant="primary" @click="updateRecipes()" class="center">More Recipes</b-button>
+        <b-button pill variant="primary" @click="updateRecipes()" v-if="random==='true'" class="center" style="display: flex; justify-content: center; left: 45%;">More Recipes</b-button>
       </div>
     </div>
   </b-container>
@@ -75,10 +75,10 @@ export default {
         );
         const recipes = response.data;
         this.recipes = [];
-        console.log(this.recipes);
-        console.log(recipes);
-        console.log(recipes.recipes);
-        this.recipes.push(...recipes.recipes);
+        console.log("this.recipes", this.recipes);
+        console.log("recipes", recipes);
+        console.log("recipes.recipes", recipes.recipes);
+        this.recipes.push(...recipes);
       } catch (error) {
         console.log(error);
       }
@@ -114,5 +114,11 @@ export default {
 <style lang="scss" scoped>
 .container {
   min-height: 400px;
+  display: block;
+  justify-content: center;
+}
+.center {
+  margin: 0;
+  position: relative;
 }
 </style>

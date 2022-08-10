@@ -5,9 +5,10 @@
 
         <div v-if="recipes.length > 0">
             <br />
-            Number of results: {{ recipes.length }}
+            <h4> Number of results: {{ recipes.length }}</h4>
 
-            <div class="results" v-for="r in orderedRecipes" :key="r.id">
+            <b-row>
+            <b-col v-for="r in orderedRecipes" :key="r.id">
                 <b-card :title="r.title" :img-src="r.image" img-alt="Image" img-top tag="article" class="mb-2 card">
                     <b-list-group flush>
                         <b-list-group-item>Number of Likes: {{ r.aggregateLikes }}</b-list-group-item>
@@ -21,8 +22,10 @@
                     </b-list-group>
                     <b-button :to="{ name: 'recipe', params: { recipeId: r.id } }" variant="primary">Go To Instructions
                     </b-button>
+                    <!--<b-button variant="secondary" v-on:click="addToFavorites(recipe.id)">Remove from favorites</b-button>-->
                 </b-card>
-            </div>
+            </b-col>
+            </b-row>
         </div>
 
         <div v-else-if="searched">
@@ -77,6 +80,24 @@ export default {
                 console.log(error);
             }
         },
+        async removeFromFavorites(id) {
+      try {
+        if (this.$root.store.username) {
+          const response = await this.axios.delete(this.$root.store.server_domain + `/users/favorites`,
+            {
+              recipeId: id,
+            }
+          );
+          this.$root.toast("Removed from favorites", "Recipe was added successfully", "success");
+          this.getFavorites();
+        }/*
+        else {
+          this.$root.toast("Add to favorites", "You need to login to add recipes to favorites", "info");
+        }*/
+      } catch (error) {
+        console.log(error);
+      }
+    },
     },
 };
 </script>
@@ -95,6 +116,6 @@ export default {
 }
 
 .card {
-    width: 40%;
+    width: 15vmax;
 }
 </style>

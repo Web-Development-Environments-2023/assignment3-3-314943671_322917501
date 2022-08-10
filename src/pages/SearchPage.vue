@@ -4,7 +4,7 @@
     <h1 class="title text-center">Search Page</h1>
     <div>
       <b-form @submit="onSubmit" @reset="onReset">
-        <b-form-input v-model="form.query" placeholder="Search for recipe"></b-form-input>
+        <b-form-input v-model="form.query" placeholder="Search for recipe" required></b-form-input>
         <br />
         <br />
         <b-form-group label-cols-sm="3" label="cuisine:" label-for="cuisine">
@@ -36,9 +36,10 @@
         <option value="timetomake">Time to make</option>
       </select>
       <br />
-      Number of results: {{ recipes.length }}
+      <h4> Number of results: {{ recipes.length }}</h4>
 
-      <div class="results" v-for="r in orderedRecipes" :key="r.id">
+      <b-row>
+      <b-col v-for="r in orderedRecipes" :key="r.id">
         <RecipePreview class="recipePreview" :recipe="r" :favorites="favorites" :watched="watched" />
         <!-- <b-card :title="r.title" :img-src="r.image" img-alt="Image" img-top tag="article" class="mb-2 card">
           <b-list-group flush>
@@ -67,7 +68,8 @@
           <b-button variant="secondary" v-else v-on:click="addToFavorites(r.id)">Add to favorites</b-button>
 
         </b-card> -->
-      </div>
+      </b-col>
+      </b-row>
     </div>
 
     <div v-else-if="searched">
@@ -236,6 +238,6 @@ export default {
 }
 
 .card {
-  width: 40%;
+  width: 15vmax;
 }
 </style>
