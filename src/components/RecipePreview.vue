@@ -77,13 +77,18 @@ export default {
   methods: {
     async addToFavorites(id) {
       try {
-        const response = await this.axios.post(this.$root.store.server_domain + `/users/favorites`,
-          {
-            recipeId: id,
-          }
-        );
-        this.$root.toast("Add to favorites", "Recipe was added successfully", "success");
-        this.getFavorites();
+        if (this.$root.store.username) {
+          const response = await this.axios.post(this.$root.store.server_domain + `/users/favorites`,
+            {
+              recipeId: id,
+            }
+          );
+          this.$root.toast("Add to favorites", "Recipe was added successfully", "success");
+          this.getFavorites();
+        }
+        else {
+          this.$root.toast("Add to favorites", "You need to login to add recipes to favorites", "info");
+        }
       } catch (error) {
         console.log(error);
       }
