@@ -70,7 +70,10 @@ export default {
         );
         const recipes = response.data;
         this.recipes = [];
-        this.recipes.push(...recipes);
+        console.log(this.recipes);
+        console.log(recipes);
+        console.log(recipes.recipes);
+        this.recipes.push(...recipes.recipes);
       } catch (error) {
         console.log(error);
       }

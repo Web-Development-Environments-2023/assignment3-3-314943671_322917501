@@ -71,7 +71,9 @@
     </div>
 
     <div v-else-if="searched">
-      No recipes found.
+      <h5>
+        No recipes found.
+      </h5>
     </div>
 
   </div>
@@ -96,7 +98,7 @@ export default {
         cuisine: "",
         intolerance: "",
         diet: "",
-        numResults: null,
+        numResults: 0,
       },
 
       text: "",
@@ -133,7 +135,7 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
-       alert(JSON.stringify(this.form));
+       //alert(JSON.stringify(this.form));
       this.sendRequst();
     },
 

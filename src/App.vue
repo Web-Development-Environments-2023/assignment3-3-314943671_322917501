@@ -219,6 +219,10 @@ input:checked + .slider::before{
 .dark-mode .list-group-item{
   background-color: #313842;
 }
+// .dark-mode .b-toast-success .toast .toast-header{
+//   background-color: #313842;
+//   border-bottom-color: #222831;
+// }
 // img {
 //     width: 150px;
 //     height: 50px;
