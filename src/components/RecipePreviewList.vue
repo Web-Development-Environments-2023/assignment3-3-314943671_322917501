@@ -9,6 +9,11 @@
         <RecipePreview class="recipePreview" :recipe="r" :favorites="favoritesRecipes" :watched="watchedRecipes" />
       </b-col>
     </b-row>
+    <div class="row">
+      <div class="col">
+        <b-button pill variant="primary" @click="updateRecipes()" class="center">More Recipes</b-button>
+      </div>
+    </div>
   </b-container>
 </template>
 
