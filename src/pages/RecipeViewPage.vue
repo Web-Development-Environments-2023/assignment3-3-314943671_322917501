@@ -4,6 +4,17 @@
       <div class="recipe-header mt-3 mb-4">
         <h1>{{ recipe.title }}</h1>
         <img :src="recipe.image" class="center" />
+        <div class="fetures">
+          <b-list-group-item v-if="recipe.vegan">
+            <b-icon icon="check-circle" scale="1" variant="success"></b-icon>For Vegans
+          </b-list-group-item>
+          <div v-if="recipe.vegetarian">
+            <b-icon icon="check-circle" scale="1" variant="success"></b-icon>For Vegetarians
+          </div>
+          <b-list-group-item v-if="recipe.glutenFree">
+            <b-icon icon="check-circle" scale="1" variant="success"></b-icon>Gluten Free
+          </b-list-group-item>
+        </div>
       </div>
       <div class="recipe-body">
         <div class="wrapper">
@@ -71,7 +82,10 @@ export default {
         aggregateLikes,
         readyInMinutes,
         image,
-        title
+        title,
+        vegan,
+        vegetarian,
+        glutenFree
       } = response.data.recipe;
 
       let _instructions = analyzedInstructions
@@ -89,10 +103,20 @@ export default {
         aggregateLikes,
         readyInMinutes,
         image,
-        title
+        title,
+        vegan,
+        vegetarian,
+        glutenFree
       };
 
       this.recipe = _recipe;
+      console.log(this.recipe.vegan,"vegan");
+        console.log(this.recipe.vegetarian,"vegetarian");
+        console.log(this.recipe.glutenFree, "gluten free");
+        console.log(this.recipe.instructions, "instructions");
+        console.log(this.recipe._instructions, "_instructions");
+        console.log(this.recipe.extendedIngredients, "extendedIngredients");
+        console.log(this.recipe.analyzedInstructions, "analyzedInstructions");
     } catch (error) {
       console.log(error);
     }

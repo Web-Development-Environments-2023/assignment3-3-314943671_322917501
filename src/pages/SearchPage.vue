@@ -22,7 +22,7 @@
         <b-form-group label-cols-sm="3" id="input-group-3" label="Number of Results:" label-for="input-3">
           <b-form-select id="input-3" v-model="form.numResults" :options="foods"></b-form-select>
         </b-form-group>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center"  style="display:flex">
           <b-button class="btn btn-default" type="submit" variant="primary">Search</b-button>
           <b-button class="btn btn-default" type="reset" variant="danger">Reset</b-button>
         </div>
@@ -39,8 +39,8 @@
       <h4> Number of results: {{ recipes.length }}</h4>
 
       <b-row>
-      <b-col v-for="r in orderedRecipes" :key="r.id">
-        <RecipePreview class="recipePreview" :recipe="r" :favorites="favorites" :watched="watched" />
+      <b-row v-for="r in orderedRecipes" :key="r.id" >
+        <RecipePreview class="recipePreview" :recipe="r" :favorites="favorites" :watched="watched" style="display: inline-flex; justify-content: center;"/>
         <!-- <b-card :title="r.title" :img-src="r.image" img-alt="Image" img-top tag="article" class="mb-2 card">
           <b-list-group flush>
             <b-list-group-item>Likes: {{ r.aggregateLikes }} &nbsp; &nbsp; Time To Make: {{ r.readyInMinutes
@@ -68,7 +68,7 @@
           <b-button variant="secondary" v-else v-on:click="addToFavorites(r.id)">Add to favorites</b-button>
 
         </b-card> -->
-      </b-col>
+      </b-row>
       </b-row>
     </div>
 
@@ -231,13 +231,14 @@ export default {
 
 .results {
   text-align: center;
-  justify-content: center;
+
   display: flex;
   align-items: center;
   padding-top: 10px;
 }
 
-.card {
+.recipePreview {
+  display: block;
   width: 15vmax;
 }
 </style>

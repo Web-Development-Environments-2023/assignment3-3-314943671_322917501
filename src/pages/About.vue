@@ -2,7 +2,7 @@
   <div class="container text-center">
     <br />
     <h1 class="title">About Us</h1>
-    <div class="row">
+    <div class="row" style="display: flex;">
       <div class="col">
         <b-img :src="require('../assets/lidor.jpg')" v-bind="mainProps" rounded="circle" alt="Circle image">
         </b-img>
@@ -20,7 +20,7 @@
         <p></p>
       </div>
     </div>
-    <div class="row">
+    <div class="row" style="display: flex;">
       <div class="col">
         <br />
         <br />

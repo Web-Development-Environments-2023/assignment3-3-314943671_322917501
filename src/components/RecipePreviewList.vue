@@ -4,11 +4,11 @@
       {{ title }}:
       <slot></slot>
     </h3>
-    <b-row>
+    <!--<b-row>-->
       <b-col v-for="r in recipes" :key="r.id">
         <RecipePreview class="recipePreview" :recipe="r" :favorites="favoritesRecipes" :watched="watchedRecipes" />
       </b-col>
-    </b-row>
+    <!--</b-row>-->
     <div class="row">
       <div class="col">
         <b-button pill variant="primary" @click="updateRecipes()" v-if="random==='true'" class="center" style="display: flex; justify-content: center; left: 45%;">More Recipes</b-button>

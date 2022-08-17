@@ -15,7 +15,7 @@
         <router-link :to="{ name: 'login' }">Login</router-link> &nbsp; &nbsp; &nbsp;
       </span>
       <span v-else>
-        <b-dropdown id="dropdown-1" text="Personal" class="m-md-2" variant="outline">
+        <b-dropdown id="dropdown-1" text="Personal" class="m-md-2" size="lg" style="font-size: x-large;" variant="outline">
           <b-dropdown-item>
             <router-link :to="{ name: 'myrecipes' }">My Recipes</router-link>
           </b-dropdown-item>
@@ -28,9 +28,9 @@
         </b-dropdown> &nbsp; &nbsp; &nbsp;
 
         Welcome back! {{ $root.store.username }} &nbsp; &nbsp; &nbsp;
-        <b-button pill variant="warning" @click="Logout">Logout</b-button>
+        <b-button pill variant="warning" @click="Logout" style="font-size: x-large;">Logout</b-button>
       </span>
-      <label class="toggle">
+      <label class="toggle" style="font-family:'Frank Ruhl Libre', Georgia, serif; font-size : medium">
         <input type="checkbox" @click="toggleDarkLight()" style="display: left;">        
         <span class="slider round"></span>
       </label>
@@ -71,7 +71,7 @@ body {
 }
 
 #app {
-  font-family: "Frank Ruhl Libre", Georgia, serif;
+  font-family: 'IBM Plex Mono';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   //color: #2c3e50;
@@ -82,10 +82,12 @@ body {
 #nav {
   padding: 30px;
   text-align: center; 
-  box-shadow: 0 0 10px 1px rgba(32, 120, 0, 0.5);
+  box-shadow: 0 0 10px 1px #85D2D6;
   display:-webkit-inline-box;
   z-index: 999;
-  width: 100%;
+  width: -webkit-fill-available;
+  font-family: 'Hi Melody';
+  font-size: xx-large;
 }
 
 a {
@@ -100,9 +102,9 @@ a {
 
 #nav a {
 
-  font-size: larger;
+  font-size: xx-large;
   margin: 15px;
-  font-family: "Frank Ruhl Libre", Georgia,sans-serif;
+  font-family: 'Hi Melody';
 }
 #nav span{
   right: 5%;
@@ -122,14 +124,16 @@ a {
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
+  font-size:medium;
   content: '🌙';
 }
 input:checked + .slider{
   background-color: white;
 }
 input:checked + .slider::before{
-  background-color: #222831;
+  background-color: #170D2B;
   padding:2%;
+  font-size:medium;
   content: '☀️';
 }
 input:focus + .slider{
@@ -153,7 +157,7 @@ input:checked + .slider::before{
   right: 0;
 }
 .dark-mode{
-  background: #222831;
+  background: #170D2B;
   color: rgba(255, 255, 255, 0.801);
 }
 .toggle input{
@@ -168,7 +172,7 @@ input:checked + .slider::before{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #222831;
+  background-color: #170D2B;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -214,14 +218,55 @@ input:checked + .slider::before{
   color:inherit;
 }
 .dark-mode .card-body{
-  background-color: #313842;
+  background-color: #207C80;
 }
 .dark-mode .list-group-item{
-  background-color: #313842;
+  background-color: inherit;
+}
+.list-group-item{
+  background-color: inherit;
+  padding: 15px;
+  border: none;
+}
+.card{
+  display: -webkit-box;
+  background-color: inherit;
+  border: none;
+  //width: 40%;
+  //border-radius: 20%;
+}
+.card-body{
+  width: 35vmin;
+  background-color: #85D2D6;
+  border-top-right-radius: 20%;
+  border-bottom-right-radius: 20%;
+  // border: solid;
+  // border-left-style: none;
+  // border-color: #207C80;
+  // border-width: thick;
+}
+.dark-mode .card-img-top{
+  border-color: #207C80;
+}
+.card-img-top{
+  border-top-left-radius: 20%;
+  border-bottom-left-radius: 20%;
+  border: solid;
+  border-color: #85D2D6;
+  border-right-style: none;
+  border-width: thick;
+  height: -webkit-fill-available;
+}
+.dark-mode .card{
+  background-color: inherit;
+  border: none;
+}
+.row{
+  display: grid;
 }
 // .dark-mode .b-toast-success .toast .toast-header{
 //   background-color: #313842;
-//   border-bottom-color: #222831;
+//   border-bottom-color: #170D2B;
 // }
 // img {
 //     width: 150px;

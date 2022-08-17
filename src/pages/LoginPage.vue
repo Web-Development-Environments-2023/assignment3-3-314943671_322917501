@@ -22,8 +22,8 @@
       <b-button type="submit" variant="primary" style="width:100px;display:block;" class="mx-auto w-100">Login
       </b-button>
       <div class="mt-2">
-        Do not have an account yet?
-        <router-link to="register"> Register in here</router-link>
+        Don't have an account yet?
+        <router-link to="register"> Register here</router-link>
       </div>
     </b-form>
     <b-alert class="mt-2" v-if="form.submitError" variant="warning" dismissible show>

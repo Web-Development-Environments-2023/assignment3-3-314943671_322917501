@@ -1,5 +1,5 @@
 <template>
-  <div class="results">
+  <div class="results" style="display: table-caption;">
 
     <!-- <div class="recipe-body">
       <img :src="recipe.image" class="recipe-image" />
@@ -14,8 +14,12 @@
       </ul>
     </div> -->
     <b-card :title="recipe.title" :img-src="recipe.image" img-alt="Image" img-top tag="article" class="mb-2 card">
+    <!-- <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" >
+    <b-card-img :src="recipe.img"/> 
+    </router-link> -->
+    <div class="features">
       <b-list-group flush>
-        <b-list-group-item>Likes: {{ recipe.aggregateLikes }} &nbsp; &nbsp; Time To Make: {{
+        <b-list-group-item>Likes: {{ recipe.aggregateLikes }} &nbsp; Time To Make: {{
             recipe.readyInMinutes
         }}
         </b-list-group-item>
@@ -35,6 +39,7 @@
           <b-icon icon="check-circle" scale="1" variant="success"></b-icon>Gluten Free
         </b-list-group-item>
       </b-list-group>
+      </div>
       <b-button :to="{ name: 'recipe', params: { recipeId: recipe.id } }" variant="primary">Instructions
       </b-button>
 
@@ -110,12 +115,15 @@ export default {
 
 <style scoped>
 .btn {
-  margin: 0 10px;
+  margin: 2%;
 }
-
+/* .card {
+  display: block;
+  width: auto;
+} */
 .results {
   text-align: center;
-  justify-content: center;
+
   display: flex;
   align-items: center;
   /* padding-top: 10px; */
