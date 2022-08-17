@@ -14,14 +14,14 @@
                         </div>
                         Ingredients:
                         <ul>
-                            {{ recipe.ingredients }}
+                            {{ recipe.ingrediants }}
                         </ul>
                     </div>
 
                     <div class="wrapped">
                         Instructions:
                         <ol>
-                            {{ recipe.instructions }}
+                            {{ recipe.instractions }}
                         </ol>
                     </div>
                 </div>
@@ -45,6 +45,15 @@ export default {
 
     mounted() {
         this.recipe = this.$route.params.name
+        console.log(this.recipe, "Myrecipe");
+        console.log(this.recipe.vegan,"vegan");
+        console.log(this.recipe.vegetarian,"vegetarian");
+        console.log(this.recipe.glutenFree, "gluten free");
+        console.log(this.recipe.instructions, "instructions");
+        console.log(this.recipe._instructions, "_instructions");
+        console.log(this.recipe.extendedIngredients, "extendedIngredients");
+        console.log(this.recipe.analyzedInstructions, "analyzedInstructions");
+        console.log(this.recipe.ingredients, "ingredients");
     },
 };
 </script>

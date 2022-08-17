@@ -25,17 +25,23 @@
             </div>
             Ingredients:
             <ul>
-              <li v-for="(r, index) in recipe.extendedIngredients" :key="index + '_' + r.id">
+              <li v-for="(r, index) in recipe.ingrediants" :key="index + '_' + r.id">
                 {{ r.original }}
               </li>
+            </ul>
+            <ul>
+                {{ recipe.ingrediants }}
             </ul>
           </div>
           <div class="wrapped">
             Instructions:
             <ol>
-              <li v-for="s in recipe._instructions" :key="s.number">
+              <li v-for="s in recipe.instractions" :key="s.number">
                 {{ s.step }}
               </li>
+            </ol>
+            <ol>
+                {{ recipe.instractions }}
             </ol>
           </div>
         </div>
@@ -110,7 +116,8 @@ export default {
       };
 
       this.recipe = _recipe;
-      console.log(this.recipe.vegan,"vegan");
+        console.log(this.recipe, "recipePage");
+        console.log(this.recipe.vegan,"vegan");
         console.log(this.recipe.vegetarian,"vegetarian");
         console.log(this.recipe.glutenFree, "gluten free");
         console.log(this.recipe.instructions, "instructions");

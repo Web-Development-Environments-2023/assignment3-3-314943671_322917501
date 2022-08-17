@@ -37,7 +37,7 @@
 import _ from 'lodash';
 
 export default {
-    name: "MyRecipes",
+    name: "myfamily",
     components: {
 
     },
