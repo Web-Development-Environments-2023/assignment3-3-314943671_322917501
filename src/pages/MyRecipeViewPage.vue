@@ -15,6 +15,7 @@
                         Ingredients:
                         <ul>
                             {{ recipe.ingrediants }}
+                            {{ recipe.Ingredients }}
                         </ul>
                     </div>
 
@@ -22,6 +23,7 @@
                         Instructions:
                         <ol>
                             {{ recipe.instractions }}
+                            {{ recipe.instructions }}
                         </ol>
                     </div>
                 </div>
